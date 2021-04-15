@@ -58,6 +58,7 @@
         <module>itstack-demo-design-20-02</module>
         <module>itstack-demo-design-21-00</module>
         <module>itstack-demo-design-22-00</module>
+        <module>constant</module>
     </modules>
 
     <dependencies>
@@ -83,6 +84,12 @@
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
             <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>compile</scope>
+            <version>1.16.22</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
