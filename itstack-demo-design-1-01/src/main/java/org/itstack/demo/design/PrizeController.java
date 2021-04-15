@@ -1,6 +1,7 @@
 package org.itstack.demo.design;
 
 import com.alibaba.fastjson.JSON;
+import com.design.bean.Result;
 import org.itstack.demo.design.card.IQiYiCardService;
 import org.itstack.demo.design.coupon.CouponResult;
 import org.itstack.demo.design.coupon.CouponService;
@@ -24,11 +25,11 @@ public class PrizeController {
             // 按照不同类型方法商品[1优惠券、2实物商品、3第三方兑换卡(爱奇艺)]
             if (req.getAwardType() == 1) {
                 CouponService couponService = new CouponService();
-                CouponResult couponResult = couponService.sendCoupon(req.getuId(), req.getAwardNumber(), req.getBizId());
-                if ("0000".equals(couponResult.getCode())) {
+                Result result = couponService.sendCoupon(req.getuId(), req.getAwardNumber(), req.getBizId());
+                if ("0000".equals(result.getCode())) {
                     awardRes = new AwardRes("0000", "发放成功");
                 } else {
-                    awardRes = new AwardRes("0001", couponResult.getInfo());
+                    awardRes = new AwardRes("0001", result.getMessage());
                 }
             } else if (req.getAwardType() == 2) {
                 GoodsService goodsService = new GoodsService();

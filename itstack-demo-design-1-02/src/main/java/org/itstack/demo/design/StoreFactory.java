@@ -5,14 +5,20 @@ import org.itstack.demo.design.store.impl.CardCommodityService;
 import org.itstack.demo.design.store.impl.CouponCommodityService;
 import org.itstack.demo.design.store.impl.GoodsCommodityService;
 
+import java.util.HashMap;
+
 public class StoreFactory {
 
+    public static HashMap<Integer,ICommodity>  WELFARE = new HashMap<>();
+
+    static {
+        WELFARE.put(1,new CouponCommodityService());
+        WELFARE.put(2,new GoodsCommodityService());
+        WELFARE.put(3,new CardCommodityService());
+    }
+
     public ICommodity getCommodityService(Integer commodityType) {
-        if (null == commodityType) return null;
-        if (1 == commodityType) return new CouponCommodityService();
-        if (2 == commodityType) return new GoodsCommodityService();
-        if (3 == commodityType) return new CardCommodityService();
-        throw new RuntimeException("不存在的商品服务类型");
+        return WELFARE.get(commodityType);
     }
 
 }
